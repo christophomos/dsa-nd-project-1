@@ -64,8 +64,8 @@ def parse_fixed_line(phone_number):
 
 def classify_and_fetch_code(phone_number):
     if phone_number[0] == fixed_prefix:
-        code = parse_fixed_line(phone_number)
-        return PhoneType.Fixed, str(phone_number[1:4])
+        fixed_code = parse_fixed_line(phone_number)
+        return PhoneType.Fixed, fixed_code
     elif phone_number[0:3] == marketer_prefix:
         return PhoneType.Marketer, marketer_prefix
     else:

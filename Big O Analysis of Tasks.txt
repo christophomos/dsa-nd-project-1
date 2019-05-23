@@ -1,8 +1,8 @@
-﻿Task 0 has a complexity of O(1) complexity: Accessing elements in an array is a constant time operation, and here it happens twice, no matter the size of the inputs, so:
+Task 0 has an order of O(1): Accessing elements in an array is a constant time operation, and here it happens twice, no matter the size of the inputs, so:
 O(2) approximates to O(1)
 
 
-Task 1 has a complexity of O(n). For each dataset, the outermost for loop runs exactly twice and the middle loop runs exactly twice, while the innermost loop iterates through every element in each list. At the end, the size of the resulting set is checked, which is a constant time operation.
+Task 1 has an order of O(n). For each dataset, the outermost for loop runs exactly twice and the middle loop runs exactly twice, while the innermost loop iterates through every element in each list. At the end, the size of the resulting set is checked, which is a constant time operation.
 Thus O(2*2*n+1) -> O(4n + 1) which approximates to O(n)
 
 
@@ -10,12 +10,12 @@ Task 2 also has a complexity of O(n). For every row of the “calls” dataset, 
 Thus O(1*n*2 + 2n) -> O(2n + 2n) -> O(4n) approximates to O(n)
 
 
-Task 3 approximates to O(n) with respect to input size. Only the first for loop of my algorithm iterates through the entire data set, in which it collects all needed data with the help of two fixed time helper functions, so it approximates to O(n).
-The second for loop of Task 3 sorts a set of area codes, an operation with an order of O(n*log n), but since 4 digits is the maximum code, in the worst case the operation is O(9999*log 9999) which approximates to O(1).
-So O(n) + O(1) approximates to O(n)
+Task 3 approximates to O(n * log n) with respect to input size. The first for loop of my algorithm iterates through the entire data set, in which it collects all needed data with the help of two fixed time helper functions, so it approximates to O(n).
+The second for loop of Task 3 sorts a set of area codes, an operation with an order of O(n*log n). We would see this worst case scenario if the number of unique area codes in the dataset is high.
+So O(n) + O(n* log n) approximates to O(n * log n)
 
 
-Task 4 approximates to O(n*log n) in the worst case (if all numbers are suspected telemarketers) because of the alphabetical sorting at the end. The two outer for loops that collect information iterate through a list exactly once, and the inner for loops iterate exactly twice so their complexity is:
+Task 4 approximates to O(n*log n) because of the alphabetical sorting of suspected telemarketers at the end.
+The two outer for loops that collect information iterate through a list exactly once, and the inner for loops iterate exactly twice so their complexity is:
 O(n*2 + n*2) -> O(4n) which approximates to O(n)
-The alphabetical sorting of suspected numbers is an O(n * log n) operation, but in this domain of the 2 for loops with order O(n) will dominate processing time. Let’s look at the case in which we process 20 billion calls and locate 1,000,000 suspected telemarketers.
-20 billion is far greater than 1 million * 6
+The alphabetical sorting of suspected numbers is an O(n * log n) operation. In the worst case scenario, every row in the call database would have a unique, suspicious number.

@@ -31,9 +31,6 @@ class SuspectInfo:
     made_outgoing_call = False
     removed_from_suspicion = False
 
-    def __init__(self, removed_from_suspicion=False):
-        self.removed_from_suspicion = removed_from_suspicion
-
     def is_suspect(self):
         return self.made_outgoing_call and not self.removed_from_suspicion
 
@@ -43,14 +40,9 @@ class SuspectInfo:
 # Maps every phone number to a SuspectInfo entry
 suspect_dict = {}
 
-marketer_prefix = '140'
-
-
 def add_to_suspect_dict_if_needed(number, suspect_dict):
     if number not in suspect_dict:
-        # Honest telemarketers removed from suspicion
-        removed_from_suspicion = (number[0:3] == marketer_prefix)
-        suspect_dict[number] = SuspectInfo(removed_from_suspicion)
+        suspect_dict[number] = SuspectInfo()
 
 
 for call in calls:
